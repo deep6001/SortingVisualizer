@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+@layer utilities {
+  .gradint {
+    @apply bg-gradient-to-r from-blue-500 to-blue-700;
+  }
+  .gradint-green{
+    @apply bg-gradient-to-r from-green-500 to-green-700
+  }
+}
