@@ -1,8 +1,10 @@
 // src/components/SelectionSort.js
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const selectionSort = async (array, setArray, setActiveIndices) => {
+const selectionSort = async (array, setArray, setActiveIndices,setComparisons) => {
   let sortedArray = [...array];
+  let comparisons=0;
+
 
   for (let i = 0; i < sortedArray.length - 1; i++) {
     let minIndex = i;
@@ -11,6 +13,8 @@ const selectionSort = async (array, setArray, setActiveIndices) => {
     for (let j = i + 1; j < sortedArray.length; j++) {
       if (sortedArray[j] < sortedArray[minIndex]) {
         setActiveIndices([i, j]);
+        comparisons++;
+        setComparisons(comparisons); // Update comparisons in real-time
         minIndex = j;
       }
     }

@@ -1,8 +1,12 @@
 // src/Utils/PancakeSort.js
-const flip = async (array, i, setArray, setActiveIndices) => {
+let comparisons = 0;
+const flip = async (array, i, setArray, setActiveIndices,setComparisons) => {
     let start = 0;
+    
     while (start < i) {
-      setActiveIndices([start, i]); // Highlight the indices being swapped
+      setActiveIndices([start, i]);
+      comparisons++;
+      setComparisons(comparisons); // Highlight the indices being swapped
       [array[start], array[i]] = [array[i], array[start]];
       setArray([...array]); // Update the state for visualization
       await new Promise(resolve => setTimeout(resolve, 20)); // Delay for visualization
@@ -22,13 +26,13 @@ const flip = async (array, i, setArray, setActiveIndices) => {
     return maxIndex;
   };
   
-  const pancakeSort = async (array, setArray, setActiveIndices) => {
+  const pancakeSort = async (array, setArray, setActiveIndices,setComparisons) => {
     for (let currSize = array.length; currSize > 1; currSize--) {
       const maxIndex = findMax(array, currSize);
   
       if (maxIndex !== currSize - 1) {
-        await flip(array, maxIndex, setArray, setActiveIndices);
-        await flip(array, currSize - 1, setArray, setActiveIndices);
+        await flip(array, maxIndex, setArray, setActiveIndices,setComparisons);
+        await flip(array, currSize - 1, setArray, setActiveIndices,setComparisons);
       }
     }
     setArray([...array]);

@@ -1,7 +1,8 @@
 // src/Utils/CocktailSort.js
-const cocktailSort = async (array, setArray, setActiveIndices) => {
+const cocktailSort = async (array, setArray, setActiveIndices,setComparisons) => {
     let swapped = true;
     let start = 0;
+    let comperision=0
     let end = array.length - 1;
   
     while (swapped) {
@@ -9,7 +10,9 @@ const cocktailSort = async (array, setArray, setActiveIndices) => {
   
       // Traverse the array from left to right
       for (let i = start; i < end; i++) {
-        setActiveIndices([i, i + 1]); // Highlight the indices being compared
+        setActiveIndices([i, i + 1]);
+        comperision++;
+        setComparisons(comperision) // Highlight the indices being compared
         if (array[i] > array[i + 1]) {
           [array[i], array[i + 1]] = [array[i + 1], array[i]];
           swapped = true;
@@ -25,7 +28,9 @@ const cocktailSort = async (array, setArray, setActiveIndices) => {
   
       // Traverse the array from right to left
       for (let i = end - 1; i >= start; i--) {
-        setActiveIndices([i, i + 1]); // Highlight the indices being compared
+        setActiveIndices([i, i + 1]);
+        comperision++;
+        setComparisons(comperision) // Highlight the indices being compared
         if (array[i] > array[i + 1]) {
           [array[i], array[i + 1]] = [array[i + 1], array[i]];
           swapped = true;

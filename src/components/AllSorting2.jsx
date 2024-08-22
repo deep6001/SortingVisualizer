@@ -11,6 +11,7 @@ import pancakeSort from '../Utils/Sorting Algorithm/PanCakeSorting';
 import ArrayVisualizer2 from './ArrayVisulizer2';
 import pigeonholeSort from '../Utils/Sorting Algorithm/PigonHoleSort';
 import radixSort from '../Utils/Sorting Algorithm/RadixSort';
+import Details from './SortingDetails'; // Import the Details component
 
 const generateRandomArray = (size, min, max) => {
   return Array.from({ length: size }, () => Math.floor(Math.random() * (max - min + 1)) + min);
@@ -20,6 +21,9 @@ const AllSorting2 = () => {
   const [array, setArray] = useState([]);
   const [selectedAlgorithm, setSelectedAlgorithm] = useState('quicksort');
   const [activeIndices, setActiveIndices] = useState([]);
+  const [comparisons, setComparisons] = useState(0);
+  const [timeTaken, setTimeTaken] = useState(0);
+  const [isSorting, setIsSorting] = useState(false);
 
   const getArraySize = () => {
     return window.innerWidth < 640 ? 70 : 300;  // 30 bars for mobile, 100 for larger screens
@@ -39,39 +43,53 @@ const AllSorting2 = () => {
   }, []);
 
   const handleSort = async () => {
+    setComparisons(0); // Reset comparisons count before sorting
+    setTimeTaken(0); // Reset time before sorting
+    setIsSorting(true); // Start sorting
+
+    const startTime = Date.now();
+
+    const timer = setInterval(() => {
+      setTimeTaken(((Date.now() - startTime) / 1000).toFixed(2));
+    }, 100); // Update every 100ms
+
     switch (selectedAlgorithm) {
       case 'quicksort':
-        await quicksort(array, 0, array.length - 1, setArray, setActiveIndices);
+        await quicksort(array, 0, array.length - 1, setArray, setActiveIndices, setComparisons);
         break;
       case 'mergesort':
-        await mergeSort(array, setArray, setActiveIndices);
+        await mergeSort(array, setArray, setActiveIndices, setComparisons);
         break;
       case 'bubblesort':
-        await bubbleSort(array, setArray, setActiveIndices,200);
+        await bubbleSort(array, setArray, setActiveIndices, setComparisons, 20);
         break;
       case 'radixsort':
-        await radixSort(array,setArray,setActiveIndices);
+        await radixSort(array, setArray, setActiveIndices, setComparisons);
+        break;
       case 'pigeonholesort':
-        await pigeonholeSort(array, setArray, setActiveIndices);
+        await pigeonholeSort(array, setArray, setActiveIndices, setComparisons);
         break;
       case 'pancakesort':
-        await pancakeSort(array, setArray, setActiveIndices);
+        await pancakeSort(array, setArray, setActiveIndices, setComparisons);
         break;
       case 'insertionsort':
-        await insertionSort(array, setArray, setActiveIndices);
+        await insertionSort(array, setArray, setActiveIndices, setComparisons);
         break;
       case 'heapsort':
-        await heapSort(array, setArray, setActiveIndices);
+        await heapSort(array, setArray, setActiveIndices, setComparisons);
         break;
       case 'selectionsort':
-        await selectionSort(array, setArray, setActiveIndices);
+        await selectionSort(array, setArray, setActiveIndices, setComparisons);
         break;
       case 'cocktailsort':
-        await cocktailSort(array, setArray, setActiveIndices);
+        await cocktailSort(array, setArray, setActiveIndices, setComparisons);
         break;
       default:
         break;
     }
+
+    clearInterval(timer); // Stop the timer when sorting is done
+    setIsSorting(false); // Sorting is done
   };
 
   const handleGenerate = () => {
@@ -80,7 +98,9 @@ const AllSorting2 = () => {
 
   return (
     <div className="flex flex-col items-center sm:justify-center h-screen bg-gray-100 p-2 sm:p-4">
-      <h1 className="text-2xl font-bold mb-4  text-center lg:text-4xl gradint-green bg-clip-text text-transparent p-2">Sorting Algorithm Visualizer</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center lg:text-4xl gradint-green bg-clip-text text-transparent p-2">
+        Sorting Algorithm Visualizer
+      </h1>
       <div className="mb-4">
         <select
           value={selectedAlgorithm}
@@ -100,6 +120,7 @@ const AllSorting2 = () => {
         </select>
       </div>
       <ArrayVisualizer2 array={array} activeIndices={activeIndices} />
+      <Details comparisons={comparisons} timeTaken={timeTaken} /> {/* Display details */}
       <Controls onSort={handleSort} onGenerate={handleGenerate} />
     </div>
   );
