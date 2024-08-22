@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Controls from './Controls';
-import quicksort from '../Utils/Quicksort';
-import mergeSort from '../Utils/MeargeSort';
-import bubbleSort from '../Utils/BubbleSort';
-import insertionSort from '../Utils/InsertionSort';
-import heapSort from '../Utils/HeapSort';
-import cocktailSort from '../Utils/CockTailSort';
-import selectionSort from '../Utils/Selectionsort';
-import pancakeSort from '../Utils/PanCakeSorting';
+import quicksort from '../Utils/Sorting Algorithm/Quicksort';
+import mergeSort from '../Utils/Sorting Algorithm/MeargeSort';
+import bubbleSort from '../Utils/Sorting Algorithm/BubbleSort';
+import insertionSort from '../Utils/Sorting Algorithm/InsertionSort';
+import heapSort from '../Utils/Sorting Algorithm/HeapSort';
+import cocktailSort from '../Utils/Sorting Algorithm/CockTailSort';
+import selectionSort from '../Utils/Sorting Algorithm/Selectionsort';
+import pancakeSort from '../Utils/Sorting Algorithm/PanCakeSorting';
 import ArrayVisualizer2 from './ArrayVisulizer2';
-import pigeonholeSort from '../Utils/PigonHoleSort';
-import radixSort from '../Utils/RadixSort';
+import pigeonholeSort from '../Utils/Sorting AlgorithmPigonHoleSort';
+import radixSort from '../Utils/Sorting Algorithm/RadixSort';
 
 const generateRandomArray = (size, min, max) => {
   return Array.from({ length: size }, () => Math.floor(Math.random() * (max - min + 1)) + min);

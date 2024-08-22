@@ -9,9 +9,7 @@ function Navbar() {
       <div className='flex items-center gap-2 mr-4'>
         <img src={logo} alt="logo" className='w-14 mix-blend-screen' />
         <h3 className='text-xl italic  sm:text-2xl' >Sorting Visulizer</h3>
-
-
-      </div>
+    </div>
 
     </div>
 
