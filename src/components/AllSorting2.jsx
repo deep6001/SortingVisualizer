@@ -9,7 +9,7 @@ import cocktailSort from '../Utils/Sorting Algorithm/CockTailSort';
 import selectionSort from '../Utils/Sorting Algorithm/Selectionsort';
 import pancakeSort from '../Utils/Sorting Algorithm/PanCakeSorting';
 import ArrayVisualizer2 from './ArrayVisulizer2';
-import pigeonholeSort from '../Utils/Sorting AlgorithmPigonHoleSort';
+import pigeonholeSort from '../Utils/Sorting Algorithm/PigonHoleSort';
 import radixSort from '../Utils/Sorting Algorithm/RadixSort';
 
 const generateRandomArray = (size, min, max) => {
