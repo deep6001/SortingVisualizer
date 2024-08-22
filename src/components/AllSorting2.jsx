@@ -1,3 +1,4 @@
+// src/AllSorting2.js
 import React, { useState, useEffect } from 'react';
 import Controls from './Controls';
 import quicksort from '../Utils/Sorting Algorithm/Quicksort';
@@ -8,9 +9,9 @@ import heapSort from '../Utils/Sorting Algorithm/HeapSort';
 import cocktailSort from '../Utils/Sorting Algorithm/CockTailSort';
 import selectionSort from '../Utils/Sorting Algorithm/Selectionsort';
 import pancakeSort from '../Utils/Sorting Algorithm/PanCakeSorting';
-import ArrayVisualizer2 from './ArrayVisulizer2';
-import pigeonholeSort from '../Utils/Sorting Algorithm/PigonHoleSort';
 import radixSort from '../Utils/Sorting Algorithm/RadixSort';
+import pigeonholeSort from '../Utils/Sorting Algorithm/PigonHoleSort';
+import ArrayVisualizer2 from './ArrayVisulizer2';
 import Details from './SortingDetails'; // Import the Details component
 
 const generateRandomArray = (size, min, max) => {
@@ -22,6 +23,7 @@ const AllSorting2 = () => {
   const [selectedAlgorithm, setSelectedAlgorithm] = useState('quicksort');
   const [activeIndices, setActiveIndices] = useState([]);
   const [comparisons, setComparisons] = useState(0);
+  const [time, setTime] = useState(0);
   const [timeTaken, setTimeTaken] = useState(0);
   const [isSorting, setIsSorting] = useState(false);
 
@@ -51,8 +53,8 @@ const AllSorting2 = () => {
 
     const timer = setInterval(() => {
       setTimeTaken(((Date.now() - startTime) / 1000).toFixed(2));
-    }, 100); // Update every 100ms
-
+    }, 100);// Reset comparisons count
+    
     switch (selectedAlgorithm) {
       case 'quicksort':
         await quicksort(array, 0, array.length - 1, setArray, setActiveIndices, setComparisons);
@@ -61,7 +63,7 @@ const AllSorting2 = () => {
         await mergeSort(array, setArray, setActiveIndices, setComparisons);
         break;
       case 'bubblesort':
-        await bubbleSort(array, setArray, setActiveIndices, setComparisons, 20);
+        await bubbleSort(array, setArray, setActiveIndices, 200, setComparisons);
         break;
       case 'radixsort':
         await radixSort(array, setArray, setActiveIndices, setComparisons);
@@ -87,9 +89,8 @@ const AllSorting2 = () => {
       default:
         break;
     }
-
     clearInterval(timer); // Stop the timer when sorting is done
-    setIsSorting(false); // Sorting is done
+    setIsSorting(false); // Set time in milliseconds
   };
 
   const handleGenerate = () => {
@@ -98,9 +99,7 @@ const AllSorting2 = () => {
 
   return (
     <div className="flex flex-col items-center sm:justify-center h-screen bg-gray-100 p-2 sm:p-4">
-      <h1 className="text-2xl font-bold mb-4 text-center lg:text-4xl gradint-green bg-clip-text text-transparent p-2">
-        Sorting Algorithm Visualizer
-      </h1>
+      <h1 className="text-2xl font-bold mb-4 text-center lg:text-4xl gradint-green bg-clip-text text-transparent p-2">Sorting Algorithm Visualizer</h1>
       <div className="mb-4">
         <select
           value={selectedAlgorithm}
@@ -112,7 +111,7 @@ const AllSorting2 = () => {
           <option value="bubblesort">Bubble Sort</option>
           <option value="pancakesort">Pancake Sort</option>
           <option value="insertionsort">Insertion Sort</option>
-          <option value='radixsort'>Radix Sort</option>
+          <option value="radixsort">Radix Sort</option>
           <option value="heapsort">Heap Sort</option>
           <option value="pigeonholesort">Pigeonhole Sort</option>
           <option value="selectionsort">Selection Sort</option>
@@ -120,8 +119,8 @@ const AllSorting2 = () => {
         </select>
       </div>
       <ArrayVisualizer2 array={array} activeIndices={activeIndices} />
-      <Details comparisons={comparisons} timeTaken={timeTaken} /> {/* Display details */}
       <Controls onSort={handleSort} onGenerate={handleGenerate} />
+      <Details selectedAlgorithm={selectedAlgorithm} comparisons={comparisons} time={timeTaken} />
     </div>
   );
 };
