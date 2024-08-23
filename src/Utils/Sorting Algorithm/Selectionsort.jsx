@@ -27,7 +27,7 @@ const selectionSort = async (array, setArray, setActiveIndices,setComparisons) =
 
     // Update the array state to visualize the sorting
     setArray([...sortedArray]);
-    await sleep(100);
+    await sleep(20);
     setActiveIndices([]); // Adjust speed of visualization
   }
 

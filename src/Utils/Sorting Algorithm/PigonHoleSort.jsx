@@ -21,7 +21,7 @@ const pigeonholeSort = async (array, setArray, setActiveIndices, setComparisons)
           array[index] = i + min;
           setArray([...array]); // Update the state for visualization
           setActiveIndices([index]); // Highlight the current index
-          await new Promise(resolve => setTimeout(resolve, 100)); // Delay for visualization
+          await new Promise(resolve => setTimeout(resolve, 20)); // Delay for visualization
           index++;
           holes[i]--;
           // Increment comparisons for each element placed in the array
