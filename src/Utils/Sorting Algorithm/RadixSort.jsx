@@ -3,7 +3,7 @@ const getMax = (array) => {
   return Math.max(...array);
 };
 
-const countingSortForRadix = async (array, exp, setArray, setActiveIndices, setComparisons) => {
+const countingSortForRadix = async (array, exp, setArray, setActiveIndices, setComparisons,delay) => {
   let output = new Array(array.length).fill(0);
   let comparison = 0;
   let count = new Array(10).fill(0);
@@ -35,16 +35,16 @@ const countingSortForRadix = async (array, exp, setArray, setActiveIndices, setC
     array[i] = output[i];
     setActiveIndices([i]); // Highlight the current index
     setArray([...array]);
-    await new Promise((resolve) => setTimeout(resolve, 20)); // Animation delay
+    await new Promise((resolve) => setTimeout(resolve, delay)); // Animation delay
     setActiveIndices([]);
   }
 };
 
-const radixSort = async (array, setArray, setActiveIndices, setComparisons) => {
+const radixSort = async (array, setArray, setActiveIndices, setComparisons,delay) => {
   let max = getMax(array);
 
   for (let exp = 1; Math.floor(max / exp) > 0; exp *= 10) {
-    await countingSortForRadix(array, exp, setArray, setActiveIndices, setComparisons);
+    await countingSortForRadix(array, exp, setArray, setActiveIndices, setComparisons,delay);
   }
 };
 

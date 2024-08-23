@@ -1,12 +1,12 @@
 // src/Utils/HeapSort.js
-const heapify = async (array, n, i, setArray, setActiveIndices, setComparisons) => {
+const heapify = async (array, n, i, setArray, setActiveIndices, setComparisons,delay) => {
   let largest = i;
   const left = 2 * i + 1;
   const right = 2 * i + 2;
   let comparisons = 0;
 
   setActiveIndices([i]); // Highlight the current index being heapified
-  await new Promise(resolve => setTimeout(resolve, 20)); // Delay for visualization
+  await new Promise(resolve => setTimeout(resolve, delay)); // Delay for visualization
 
   if (left < n) {
       comparisons++; // Comparison between left and largest
@@ -27,7 +27,7 @@ const heapify = async (array, n, i, setArray, setActiveIndices, setComparisons) 
   if (largest !== i) {
       [array[i], array[largest]] = [array[largest], array[i]];
       setArray([...array]); // Update the state for visualization
-      await new Promise(resolve => setTimeout(resolve, 20)); // Delay for visualization
+      await new Promise(resolve => setTimeout(resolve, delay)); // Delay for visualization
 
       await heapify(array, n, largest, setArray, setActiveIndices, setComparisons); // Recursively heapify the affected sub-tree
   }

@@ -1,5 +1,5 @@
 // src/Utils/PigeonholeSort.js
-const pigeonholeSort = async (array, setArray, setActiveIndices, setComparisons) => {
+const pigeonholeSort = async (array, setArray, setActiveIndices, setComparisons,delay) => {
   const min = Math.min(...array);
   const max = Math.max(...array);
   const range = max - min + 1;
@@ -21,7 +21,7 @@ const pigeonholeSort = async (array, setArray, setActiveIndices, setComparisons)
           array[index] = i + min;
           setArray([...array]); // Update the state for visualization
           setActiveIndices([index]); // Highlight the current index
-          await new Promise(resolve => setTimeout(resolve, 20)); // Delay for visualization
+          await new Promise(resolve => setTimeout(resolve, delay)); // Delay for visualization
           index++;
           holes[i]--;
           // Increment comparisons for each element placed in the array

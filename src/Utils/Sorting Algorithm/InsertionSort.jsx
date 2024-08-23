@@ -1,7 +1,7 @@
 // src/utils/insertionsort.js
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const insertionSort = async (array, setArray, setActiveIndices,setComparisons) => {
+const insertionSort = async (array, setArray, setActiveIndices,setComparisons,delay) => {
   let sortedArray = [...array];
   let comparisons=0;
   
@@ -20,7 +20,7 @@ const insertionSort = async (array, setArray, setActiveIndices,setComparisons) =
       
       // Update the array state to visualize the sorting
       setArray([...sortedArray]);
-      await sleep(20);
+      await sleep(delay);
       setActiveIndices([]);
        // Adjust speed of visualization
     }

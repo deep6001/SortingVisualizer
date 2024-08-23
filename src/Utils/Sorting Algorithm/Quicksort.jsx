@@ -1,5 +1,5 @@
 // src/Utils/Quicksort.js
-const partition = async (array, low, high, setArray, setActiveIndices, setComparisons) => {
+const partition = async (array, low, high, setArray, setActiveIndices, setComparisons,delay) => {
   const pivot = array[high];
   let comparisons = 0;
   let i = low - 1;
@@ -12,7 +12,7 @@ const partition = async (array, low, high, setArray, setActiveIndices, setCompar
       i++;
       [array[i], array[j]] = [array[j], array[i]];
       setArray([...array]); // Update the state for visualization
-      await new Promise(resolve => setTimeout(resolve, 20)); // Delay for visualization
+      await new Promise(resolve => setTimeout(resolve, delay)); // Delay for visualization
     }
   }
   [array[i + 1], array[high]] = [array[high], array[i + 1]];
@@ -21,11 +21,11 @@ const partition = async (array, low, high, setArray, setActiveIndices, setCompar
   return i + 1;
 };
 
-const quicksort = async (array, low, high, setArray, setActiveIndices, setComparisons) => {
+const quicksort = async (array, low, high, setArray, setActiveIndices, setComparisons,delay) => {
   if (low < high) {
-    const pi = await partition(array, low, high, setArray, setActiveIndices, setComparisons);
-    await quicksort(array, low, pi - 1, setArray, setActiveIndices, setComparisons);
-    await quicksort(array, pi + 1, high, setArray, setActiveIndices, setComparisons);
+    const pi = await partition(array, low, high, setArray, setActiveIndices, setComparisons,delay);
+    await quicksort(array, low, pi - 1, setArray, setActiveIndices, setComparisons,delay);
+    await quicksort(array, pi + 1, high, setArray, setActiveIndices, setComparisons,delay);
   }
 };
 

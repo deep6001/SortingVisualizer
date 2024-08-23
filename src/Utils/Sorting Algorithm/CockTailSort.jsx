@@ -1,5 +1,5 @@
 // src/Utils/CocktailSort.js
-const cocktailSort = async (array, setArray, setActiveIndices,setComparisons) => {
+const cocktailSort = async (array, setArray, setActiveIndices,setComparisons,delay) => {
     let swapped = true;
     let start = 0;
     let comperision=0
@@ -18,7 +18,7 @@ const cocktailSort = async (array, setArray, setActiveIndices,setComparisons) =>
           swapped = true;
         }
         setArray([...array]); // Update the state for visualization
-        await new Promise(resolve => setTimeout(resolve, 20)); // Delay for visualization
+        await new Promise(resolve => setTimeout(resolve, delay)); // Delay for visualization
       }
   
       if (!swapped) break;
@@ -36,7 +36,7 @@ const cocktailSort = async (array, setArray, setActiveIndices,setComparisons) =>
           swapped = true;
         }
         setArray([...array]); // Update the state for visualization
-        await new Promise(resolve => setTimeout(resolve, 20)); // Delay for visualization
+        await new Promise(resolve => setTimeout(resolve, delay)); // Delay for visualization
       }
   
       start++;

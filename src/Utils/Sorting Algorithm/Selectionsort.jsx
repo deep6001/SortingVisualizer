@@ -1,7 +1,7 @@
 // src/components/SelectionSort.js
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const selectionSort = async (array, setArray, setActiveIndices,setComparisons) => {
+const selectionSort = async (array, setArray, setActiveIndices,setComparisons,delay) => {
   let sortedArray = [...array];
   let comparisons=0;
 
@@ -27,7 +27,7 @@ const selectionSort = async (array, setArray, setActiveIndices,setComparisons) =
 
     // Update the array state to visualize the sorting
     setArray([...sortedArray]);
-    await sleep(20);
+    await sleep(delay);
     setActiveIndices([]); // Adjust speed of visualization
   }
 
