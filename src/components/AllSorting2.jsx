@@ -33,7 +33,7 @@ const AllSorting2 = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      const newSize = window.innerWidth < 640 ? 30 : 100;
+      const newSize = window.innerWidth < 640 ? 30 : 300;
       setArraySize(newSize);
       setArray(generateRandomArray(newSize, 10, 100));
     };
@@ -61,7 +61,7 @@ const AllSorting2 = () => {
         await mergeSort(array, setArray, setActiveIndices, setComparisons, delay);
         break;
       case 'bubblesort':
-        await bubbleSort(array, setArray, setActiveIndices, delay, setComparisons);
+        await bubbleSort(array, setArray, setActiveIndices,setComparisons, delay);
         break;
       case 'radixsort':
         await radixSort(array, setArray, setActiveIndices, setComparisons, delay);
@@ -94,6 +94,8 @@ const AllSorting2 = () => {
 
   const handleGenerate = () => {
     setArray(generateRandomArray(arraySize, 10, 100));
+    // setTimeTaken(0);
+    // setComparisons(0);
   };
 
   const handleArraySizeChange = (e) => {
@@ -107,27 +109,27 @@ const AllSorting2 = () => {
   };
 
   return (
-    <div className="flex flex-col items-center sm:justify-center h-screen bg-gray-100 p-2 sm:p-4">
+    <div className="flex flex-col items-center sm:justify-center  h-screen bg-gray-100 p-2 sm:p-4 ">
       <h1 className="text-2xl font-bold mb-4 text-center lg:text-4xl gradient-green bg-clip-text text-transparent p-2 gradint-green">
         Sorting Algorithm Visualizer
       </h1>
-      <div className="mb-4 flex gap-4">
+      <div className="mb-4 flex gap-4 flex-wrap justify-center">
         <select
           value={selectedAlgorithm}
           onChange={(e) => setSelectedAlgorithm(e.target.value)}
-          className="p-2 border border-gray-400 rounded-lg gradient outline-none gradint"
+          className="p-2 border border-gray-400 rounded-lg gradient outline-none gradint text-white"
           disabled={isSorting}
         >
-          <option value="quicksort">Quicksort</option>
-          <option value="mergesort">Merge Sort</option>
-          <option value="bubblesort">Bubble Sort</option>
-          <option value="pancakesort">Pancake Sort</option>
-          <option value="insertionsort">Insertion Sort</option>
-          <option value="radixsort">Radix Sort</option>
-          <option value="heapsort">Heap Sort</option>
-          <option value="pigeonholesort">Pigeonhole Sort</option>
-          <option value="selectionsort">Selection Sort</option>
-          <option value="cocktailsort">Cocktail Sort</option>
+          <option value="quicksort" className='bg-black'>Quicksort</option>
+          <option value="mergesort"  className='bg-black'>Merge Sort</option>
+          <option value="bubblesort" className='bg-black'>Bubble Sort</option>
+          <option value="pancakesort" className='bg-black'>Pancake Sort</option>
+          <option value="insertionsort" className='bg-black'>Insertion Sort</option>
+          <option value="radixsort" className='bg-black'>Radix Sort</option>
+          <option value="heapsort" className='bg-black'>Heap Sort</option>
+          <option value="pigeonholesort" className='bg-black'>Pigeonhole Sort</option>
+          <option value="selectionsort" className='bg-black'>Selection Sort</option>
+          <option value="cocktailsort" className='bg-black'>Cocktail Sort</option>
         </select>
         <div className='flex flex-col items-center justify-center border gradient p-1 gradint rounded-lg'>
           <label htmlFor="arraySize" className='text-white '>Array Size</label>
@@ -138,13 +140,13 @@ const AllSorting2 = () => {
             max={300}
             value={arraySize}
             onChange={handleArraySizeChange}
-            className='p-2 border border-gray-400 rounded-lg'
+            className='p-2 border border-gray-400 rounded-lg bg-black'
             disabled={isSorting}
           />
-          <div>{arraySize}</div>
+          <div className='text-white'>{arraySize}</div>
         </div>
         <div className='flex flex-col items-center justify-center border gradient p-1 gradint rounded-lg'>
-          <label htmlFor="delay" className='text-white '>Delay (ms)</label>
+          <label htmlFor="delay" className='text-white '>Speed(ms)</label>
           <input
             type="range"
             id="delay"
@@ -156,7 +158,7 @@ const AllSorting2 = () => {
             className='p-2 border border-gray-400 rounded-lg'
             disabled={isSorting}
           />
-          <div>{delay}</div>
+          <div className='text-white'>{delay}</div>
         </div>
       </div>
       <ArrayVisualizer2 array={array} activeIndices={activeIndices} />

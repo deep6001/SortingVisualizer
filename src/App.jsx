@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import AllSorting2 from './components/AllSorting2';
 import {Outlet, Route,Routes} from 'react-router-dom'
-import AllSearching from './Utils/Searchinhg Algo/AllSearching';
+import AllSearching from './components/AllSearching';
 
 const App = () => {
   
