@@ -33,7 +33,8 @@ const AllSorting2 = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      const newSize = window.innerWidth < 640 ? 30 : 300;
+      const newSize = window.innerWidth < 640 ? 30 : 200;
+
       setArraySize(newSize);
       setArray(generateRandomArray(newSize, 10, 100));
     };
@@ -109,11 +110,15 @@ const AllSorting2 = () => {
   };
 
   return (
-    <div className="flex flex-col items-center sm:justify-center  h-screen bg-gray-100 p-2 sm:p-4 ">
-      <h1 className="text-2xl font-bold mb-4 text-center lg:text-4xl gradient-green bg-clip-text text-transparent p-2 gradint-green">
+    <div className="flex flex-col sm:flex-row items-start sm:justify-center  h-screen bg-gray-100 p-2 sm:p-4 ">
+      {/* <h1 className="text-2xl font-bold mb-4 text-center lg:text-4xl gradient-green bg-clip-text text-transparent p-2 gradint-green">
         Sorting Algorithm Visualizer
-      </h1>
-      <div className="mb-4 flex gap-4 flex-wrap justify-center">
+      </h1> */}
+      
+      <ArrayVisualizer2 array={array} activeIndices={activeIndices} />
+      <div className='flex flex-col gap-4 justify-center'>
+        <Details selectedAlgorithm={selectedAlgorithm} comparisons={comparisons} time={timeTaken} />
+        <div className="mb-4 flex gap-4 flex-wrap justify-center w-full">
         <select
           value={selectedAlgorithm}
           onChange={(e) => setSelectedAlgorithm(e.target.value)}
@@ -137,7 +142,7 @@ const AllSorting2 = () => {
             type="range"
             id="arraySize"
             min={5}
-            max={300}
+            max={100}
             value={arraySize}
             onChange={handleArraySizeChange}
             className='p-2 border border-gray-400 rounded-lg bg-black'
@@ -151,7 +156,7 @@ const AllSorting2 = () => {
             type="range"
             id="delay"
             min={0}
-            max={1000}
+            max={2000}
             step={5}
             value={delay}
             onChange={handleDelayChange}
@@ -160,10 +165,10 @@ const AllSorting2 = () => {
           />
           <div className='text-white'>{delay}</div>
         </div>
+        </div>
+        <Controls onSort={handleSort} onGenerate={handleGenerate} isSorting={isSorting} />
+     
       </div>
-      <ArrayVisualizer2 array={array} activeIndices={activeIndices} />
-      <Controls onSort={handleSort} onGenerate={handleGenerate} isSorting={isSorting} />
-      <Details selectedAlgorithm={selectedAlgorithm} comparisons={comparisons} time={timeTaken} />
     </div>
   );
 };

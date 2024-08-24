@@ -6,7 +6,8 @@ const ArrayVisualizer2 = ({ array, activeIndices }) => {
   const maxValue = Math.max(...array);
 
   return (
-    <div className="flex justify-center items-start min-h-64 sm:w-full flex-grow-0 overflow-hidden border">
+    
+    <div className="flex justify-center w-full min-h-64 sm:w-full flex-grow-0 overflow-hidden  h-[80%] p-4">
       {array.map((value, idx) => ( 
         <ArrayBar2
           key={idx}
@@ -16,6 +17,7 @@ const ArrayVisualizer2 = ({ array, activeIndices }) => {
         />
       ))}
     </div>
+    
   );
 };
 

@@ -33,12 +33,12 @@ const heapify = async (array, n, i, setArray, setActiveIndices, setComparisons,d
   }
 };
 
-const heapSort = async (array, setArray, setActiveIndices, setComparisons) => {
+const heapSort = async (array, setArray, setActiveIndices, setComparisons,delay) => {
   const n = array.length;
 
   // Build a max heap
   for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
-      await heapify(array, n, i, setArray, setActiveIndices, setComparisons);
+      await heapify(array, n, i, setArray, setActiveIndices, setComparisons,delay);
   }
 
   // One by one extract elements from heap
@@ -47,7 +47,7 @@ const heapSort = async (array, setArray, setActiveIndices, setComparisons) => {
       [array[0], array[i]] = [array[i], array[0]];
       setArray([...array]); // Update the state for visualization
       setActiveIndices([0, i]); // Highlight the root and the end index
-      await new Promise(resolve => setTimeout(resolve, 20)); // Delay for visualization
+      await new Promise(resolve => setTimeout(resolve, delay)); // Delay for visualization
 
       // Call max heapify on the reduced heap
       await heapify(array, i, 0, setArray, setActiveIndices, setComparisons);

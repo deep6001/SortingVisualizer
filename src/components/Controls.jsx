@@ -3,7 +3,7 @@ import React from 'react';
 
 const Controls = ({ onSort, onGenerate }) => {
   return (
-    <div className="flex space-x-4 mt-6">
+    <div className="flex space-x-4  justify-center ">
       <button
         onClick={onSort}
         className="px-4 py-2 gradint-green text-white rounded"
