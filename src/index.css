@@ -10,4 +10,102 @@
   .gradint-green{
     @apply bg-gradient-to-r from-green-500 to-green-700
   }
+  
+  
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 10px 0;
+  height: 0;
+  width: 100%;
+  background-color: transparent;
+  position: relative;
+}
+
+@media only screen and (max-width: 410px) {
+  input[type=range] {
+      position:unset
+  }
+}
+
+input[type=range]:focus {
+  outline: none
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: #f04896;
+  border-radius: 3px
+}
+
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #30302f,0 0 1px #30302f;
+  border: 1px solid #af3636;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #e11142;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5px
+}
+
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #30302f,0 0 1px #30302f;
+  border: 1px solid #000;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #f04896;
+  
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5px
+}
+input[type=range][name=colorDifference]:active:after,input[type=range][name=colorDifference]:focus:after,input[type=range][name=colorDifference]:hover:after {
+  content: attr(value)
+}
+
+input[type=range]:focus::-ms-fill-lower,input[type=range]:focus::-ms-fill-upper,input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #001f3f;
+  background: var(--textColor)
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: #001f3f;
+  background: var(--textColor);
+  border-radius: 1.3px
+}
+
+input[type=range]::-moz-range-thumb,input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #30302f,0 0 1px #30302f;
+  border: 1px solid #000;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #001f3f;
+  background: var(--textColor);
+  cursor: pointer
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 6px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 16px 0;
+  color: transparent
+}
+
+input[type=range]::-ms-fill-lower,input[type=range]::-ms-fill-upper {
+  border: .2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000,0 0 1px #0d0d0d
 }

@@ -46,7 +46,7 @@ const complexityData = {
 
 const Details = ({ selectedAlgorithm, comparisons, time }) => {
   return (
-    <div className="mt-4 p-4 border border-gray-300 rounded-lg gradint shadow-md text-black">
+    <div className="mt-4  border border-gray-300 rounded-lg  gradint text-black  shadow-md p-4">
       <h2 className="text-xl font-bold mb-2 text-white ">Sorting Algorithm Details</h2>
       <div className="mb-4">
         {/* <label htmlFor="algorithm" className="block text-white mb-2">Select Algorithm:</label>
@@ -61,7 +61,7 @@ const Details = ({ selectedAlgorithm, comparisons, time }) => {
           ))}
         </select> */}
       </div>
-      <table className="min-w-full bg-white border border-gray-300 rounded-lg">
+      <table className="min-w-full border border-gray-300 rounded-lg  bg-[#e0e0e0] shadow-custom p-4">
         <thead>
           <tr>
             <th className="border border-gray-300 px-4 py-2">Metric</th>

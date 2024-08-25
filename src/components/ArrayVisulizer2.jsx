@@ -7,7 +7,7 @@ const ArrayVisualizer2 = ({ array, activeIndices }) => {
 
   return (
     
-    <div className="flex justify-center w-full min-h-64 sm:w-full flex-grow-0 overflow-hidden  h-[80%] p-4">
+    <div className="flex justify-center items-end w-full min-h-64 sm:w-full flex-grow-0 overflow-hidden  h-[80%] p-4">
       {array.map((value, idx) => ( 
         <ArrayBar2
           key={idx}

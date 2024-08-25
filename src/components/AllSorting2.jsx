@@ -95,8 +95,8 @@ const AllSorting2 = () => {
 
   const handleGenerate = () => {
     setArray(generateRandomArray(arraySize, 10, 100));
-    // setTimeTaken(0);
-    // setComparisons(0);
+    setTimeTaken(0);
+    setComparisons(0);
   };
 
   const handleArraySizeChange = (e) => {
@@ -150,7 +150,7 @@ const AllSorting2 = () => {
           />
           <div className='text-white'>{arraySize}</div>
         </div>
-        <div className='flex flex-col items-center justify-center border gradient p-1 gradint rounded-lg'>
+        <div className='flex flex-col  items-center justify-center border gradient p-1 gradint rounded-lg'>
           <label htmlFor="delay" className='text-white '>Speed(ms)</label>
           <input
             type="range"
@@ -160,7 +160,7 @@ const AllSorting2 = () => {
             step={5}
             value={delay}
             onChange={handleDelayChange}
-            className='p-2 border border-gray-400 rounded-lg'
+            className='p-2 border border-gray-400 rounded-lg range-input '
             disabled={isSorting}
           />
           <div className='text-white'>{delay}</div>
