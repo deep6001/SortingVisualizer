@@ -110,13 +110,11 @@ const AllSorting2 = () => {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row items-start sm:justify-center  h-screen bg-gray-100 p-2 sm:p-4 ">
-      {/* <h1 className="text-2xl font-bold mb-4 text-center lg:text-4xl gradient-green bg-clip-text text-transparent p-2 gradint-green">
-        Sorting Algorithm Visualizer
-      </h1> */}
+    <div className="flex flex-col sm:flex-col md:flex-row   items-start sm:justify-center h-screen bg-white p-2 sm:p-4 ">
+    
       
       <ArrayVisualizer2 array={array} activeIndices={activeIndices} />
-      <div className='flex flex-col gap-4 justify-center'>
+      <div className='flex flex-col gap-4 justify-center w-full md:w-auto'>
         <Details selectedAlgorithm={selectedAlgorithm} comparisons={comparisons} time={timeTaken} />
         <div className="mb-4 flex gap-4 flex-wrap justify-center w-full">
         <select
@@ -125,7 +123,7 @@ const AllSorting2 = () => {
           className="p-2 border border-gray-400 rounded-lg gradient outline-none gradint text-white"
           disabled={isSorting}
         >
-          <option value="quicksort" className='bg-black'>Quicksort</option>
+          <option value="quicksort" className='bg-black'>Quick sort</option>
           <option value="mergesort"  className='bg-black'>Merge Sort</option>
           <option value="bubblesort" className='bg-black'>Bubble Sort</option>
           <option value="pancakesort" className='bg-black'>Pancake Sort</option>
@@ -169,6 +167,7 @@ const AllSorting2 = () => {
         <Controls onSort={handleSort} onGenerate={handleGenerate} isSorting={isSorting} />
      
       </div>
+      
     </div>
   );
 };

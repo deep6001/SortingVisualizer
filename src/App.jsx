@@ -14,7 +14,8 @@ const App = () => {
     <Routes>
         <Route path="/" element={<AllSorting2 />} />
         <Route path="/search" element={<AllSearching/>} />
-      </Routes>
+    </Routes>
+
     </>
   );
 };

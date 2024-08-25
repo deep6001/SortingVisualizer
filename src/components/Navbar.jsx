@@ -10,7 +10,7 @@ function Navbar() {
       <Link to='/'>
           <div className='flex items-center gap-2 mr-4'>
             <img src={logo} alt="logo" className='w-14 mix-blend-screen' />
-            <h3 className='text-xl italic  sm:text-2xl font-bold text-white ' >Sorting <span className='text-[#185937]'>Visulizer</span></h3>
+            <h3 className='text-xl italic  sm:text-2xl font-bold text-white ' >Algo <span className='text-[#dc3434]'>Animate</span></h3>
           </div>
       </Link>
     </div>
