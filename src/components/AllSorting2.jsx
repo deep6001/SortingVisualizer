@@ -110,8 +110,8 @@ const AllSorting2 = () => {
   };
 
   return (
-    <div className="flex flex-col sm:flex-col md:flex-row   items-start sm:justify-center h-screen bg-white p-2 sm:p-4 ">
-    
+    <div className="flex flex-col sm:flex-col md:flex-row   items-start sm:justify-center h-screen bg-white p-2 sm:p-4  ">
+  
       
       <ArrayVisualizer2 array={array} activeIndices={activeIndices} />
       <div className='flex flex-col gap-4 justify-center w-full md:w-auto'>

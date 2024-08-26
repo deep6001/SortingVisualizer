@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 function Navbar() {
   return (
     <>
-    <div className='h-16 flex items-center z-10 gap-4 p-2  bg-[#3ABEF9] overflow-hidden justify-between '>
+    <div className='h-16 flex items-center z-10 gap-4 p-2  w-full bg-[#3ABEF9] overflow-hidden justify-between '>
       <Link to='/'>
           <div className='flex items-center gap-2 mr-4'>
             <img src={logo} alt="logo" className='w-14 mix-blend-screen' />

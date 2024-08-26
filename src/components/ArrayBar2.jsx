@@ -9,7 +9,7 @@ const ArrayBar2 = ({ value, maxValue, isActive }) => {
 
   return (
     <div
-      className={`w-1 bg-blue-500 border sm:w-[5%] text-white flex justify-center ${isActive ? 'bg-red-500' : 'bg-blue-500'}`}
+      className={`w-[5%] bg-blue-500 border sm:w-[5%] text-white flex justify-center ${isActive ? 'bg-red-500' : 'bg-blue-500'}`}
       style={{
         height: `${barHeight}%`
       }}
