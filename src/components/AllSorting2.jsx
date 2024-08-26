@@ -23,7 +23,7 @@ const AllSorting2 = () => {
   const [activeIndices, setActiveIndices] = useState([]);
   const [comparisons, setComparisons] = useState(0);
   const [timeTaken, setTimeTaken] = useState(0);
-  const [arraySize, setArraySize] = useState(window.innerWidth < 640 ? 30 : 100);
+  const [arraySize, setArraySize] = useState(window.innerWidth < 640 ? 100 : 100);
   const [isSorting, setIsSorting] = useState(false);
   const [delay, setDelay] = useState(100); // State for delay, default to 100ms
 
@@ -33,7 +33,7 @@ const AllSorting2 = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      const newSize = window.innerWidth < 640 ? 30 : 200;
+      const newSize = window.innerWidth < 640 ? 30 : 100;
 
       setArraySize(newSize);
       setArray(generateRandomArray(newSize, 10, 100));
