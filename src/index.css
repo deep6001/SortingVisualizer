@@ -11,7 +11,7 @@
     @apply bg-gradient-to-r from-green-500 to-green-700
   }
   #root{
-    @apply flex gap-10 flex-col md:gap-14
+    @apply flex gap-[0.5rem] flex-col md:gap-14 
 
   }
   
