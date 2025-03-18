@@ -1,9 +1,10 @@
 import React from 'react'
+import MapWithAStar from './Map'
 
 function AllSearching() {
   return (
-    <div>
-      searching
+    <div className='h-screen flex justify-center items-start'>
+      <MapWithAStar/>
     </div>
   )
 }
