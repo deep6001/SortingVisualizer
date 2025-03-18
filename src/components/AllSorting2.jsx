@@ -129,7 +129,7 @@ const AllSorting2 = () => {
 
               {/* Algorithm Selector */}
               <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
+                <label className=" text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
                   <BarChart2 className="h-4 w-4 text-blue-400" />
                   Select Algorithm
                 </label>
@@ -161,7 +161,7 @@ const AllSorting2 = () => {
 
               {/* Array Size Control */}
               <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
+                <label className=" text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
                   <Sliders className="h-4 w-4 text-green-400" />
                   Array Size: {arraySize}
                 </label>
@@ -184,7 +184,7 @@ const AllSorting2 = () => {
 
               {/* Speed Control */}
               <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
+                <label className=" text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
                   <Settings className="h-4 w-4 text-purple-400" />
                   Animation Speed: {delay}ms
                 </label>
