@@ -1,4 +1,4 @@
-🔢 Sorting Visualizer
+[🔢 Sorting Visualizer
 An interactive sorting algorithm visualizer built with React, Vite, and Tailwind CSS. This project demonstrates how different sorting algorithms work by visually animating their operations on an array of numbers.
 
 ⚡ Features
@@ -47,3 +47,4 @@ Total comparisons made
 Total time taken
 
 The bars change color to represent different stages (e.g., comparison, swapping, sorted).
+]([https://algoanimate.netlify.app/](https://algoanimate.netlify.app/))
