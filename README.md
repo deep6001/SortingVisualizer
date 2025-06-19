@@ -1,8 +1,49 @@
-# React + Vite
+🔢 Sorting Visualizer
+An interactive sorting algorithm visualizer built with React, Vite, and Tailwind CSS. This project demonstrates how different sorting algorithms work by visually animating their operations on an array of numbers.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+⚡ Features
+🎨 Real-time visual animations of sorting algorithms
 
-Currently, two official plugins are available:
+📊 Tracks:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Execution time (in milliseconds)
+
+Number of comparisons
+
+🔄 Multiple algorithms supported, including:
+
+Bubble Sort
+
+Insertion Sort
+
+Selection Sort
+
+Merge Sort
+
+Quick Sort
+
+Radix Sort
+
+📱 Responsive design optimized for both desktop and mobile
+
+🎛️ Adjustable speed and array size
+
+🛠️ Tech Stack
+React (via Vite) – UI and logic
+
+Tailwind CSS – Styling and layout
+
+JavaScript – Sorting logic and performance tracking
+
+🚀 How It Works
+A random array of bars is generated on load.
+
+When an algorithm is selected, it animates how elements are compared and swapped.
+
+It displays:
+
+Total comparisons made
+
+Total time taken
+
+The bars change color to represent different stages (e.g., comparison, swapping, sorted).
