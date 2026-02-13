@@ -6,19 +6,18 @@ const ArrayVisualizer2 = ({ array, activeIndices }) => {
   const maxValue = Math.max(...array);
 
   return (
-    
-    <div className="flex justify-center  items-end w-full min-h-64 sm:min-h-48 sm:w-full flex-grow-0 overflow-hidden h-[80%] p-4">
-      {array.map((value, idx) => ( 
+    <div className="flex items-end justify-center h-full w-full gap-[2px]">
+      {array.map((value, idx) => (
         <ArrayBar2
           key={idx}
           value={value}
           maxValue={maxValue}
-          isActive={activeIndices.includes(idx)} // Check if the current index is active
+          isActive={activeIndices.includes(idx)}
         />
       ))}
     </div>
-    
   );
 };
+
 
 export default ArrayVisualizer2;
