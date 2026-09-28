@@ -1,23 +1,26 @@
-// src/App.js
-import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
-import AllSorting2 from './components/AllSorting2';
-import {Outlet, Route,Routes} from 'react-router-dom'
-import AllSearching from './components/AllSearching';
+import { lazy, Suspense } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import Shell from './app/Shell';
+import Home from './app/Home';
+import { modules } from './app/catalog';
 
-const App = () => {
-  
+const RacePage = lazy(() => import('./modules/sorting/RacePage.jsx'));
+
+export default function App() {
   return (
-    <>
-    <Navbar/>
-    <Outlet/>
     <Routes>
-        <Route path="/" element={<AllSorting2 />} />
-        <Route path="/search" element={<AllSearching/>} />
+      <Route element={<Shell />}>
+        <Route index element={<Home />} />
+        <Route path="race" element={<Lazy el={<RacePage />} />} />
+        {modules.map(({ meta, Page }) => (
+          <Route key={meta.id} path={`${meta.id}/:algo?`} element={<Lazy el={<Page />} />} />
+        ))}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Route>
     </Routes>
-
-    </>
   );
-};
+}
 
-export default App;
+function Lazy({ el }) {
+  return <Suspense fallback={<div className="p-10 text-sm text-mist">Loading…</div>}>{el}</Suspense>;
+}

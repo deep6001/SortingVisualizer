@@ -2,123 +2,136 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Theme: "Indigo night". Every color in the app is defined here.
+ * App tokens are RGB channels (for Tailwind opacity modifiers); shadcn tokens are HSL.
+ * Keep src/core/theme.js in sync for canvas / three.js.
+ */
+@layer base {
+  :root {
+    color-scheme: dark;
 
-@layer utilities {
-  .gradint {
-    @apply bg-gradient-to-r from-blue-500 to-blue-700;
+    --deep: 9 9 11;
+    --ink: 11 11 15;
+    --panel: 19 19 26;
+    --raise: 28 28 38;
+    --line: 39 39 52;
+    --mist: 161 161 178;
+    --paper: 244 244 247;
+    --sky: 129 140 248;
+    --amber: 251 191 36;
+    --coral: 251 113 133;
+    --mint: 52 211 153;
+    --violet: 232 121 249;
+
+    --background: 240 14% 4%;
+    --foreground: 240 20% 96%;
+    --card: 240 16% 8.5%;
+    --card-foreground: 240 20% 96%;
+    --popover: 240 16% 8%;
+    --popover-foreground: 240 20% 96%;
+    --primary: 239 84% 67%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 14% 13%;
+    --secondary-foreground: 240 20% 96%;
+    --muted: 240 14% 13%;
+    --muted-foreground: 240 8% 66%;
+    --accent: 240 14% 15%;
+    --accent-foreground: 240 20% 96%;
+    --destructive: 351 95% 71%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 14% 17%;
+    --input: 240 14% 19%;
+    --ring: 239 84% 67%;
+    --radius: 0.75rem;
   }
 
-  .gradint-green {
-    @apply bg-gradient-to-r from-green-500 to-green-700
+  * {
+    @apply border-border;
   }
 
+  html,
+  body,
   #root {
-    @apply flex flex-col
+    height: 100%;
   }
 
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+    /* Aceternity-style dot field with an indigo glow at the top */
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgb(99 102 241 / 0.18), transparent 70%),
+      radial-gradient(rgb(255 255 255 / 0.055) 1px, transparent 1px);
+    background-size: 100% 100%, 22px 22px;
+    background-attachment: fixed;
+  }
 
-}
+  ::selection {
+    @apply bg-primary/40;
+  }
 
-
-input[type=range] {
-  -webkit-appearance: none;
-  margin: 10px 0;
-  height: 0;
-  width: 100%;
-  background-color: transparent;
-  position: relative;
-}
-
-@media only screen and (max-width: 410px) {
-  input[type=range] {
-    position: unset
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
   }
 }
 
-input[type=range]:focus {
-  outline: none
+@layer components {
+  /* the visual stage every visualizer draws into */
+  .stage {
+    @apply relative rounded-xl border border-white/[0.08] bg-deep;
+    background-image: radial-gradient(ellipse 70% 60% at 50% 0%, rgb(99 102 241 / 0.1), transparent 70%);
+    box-shadow:
+      0 0 0 1px rgb(0 0 0 / 0.4),
+      0 20px 50px -20px rgb(0 0 0 / 0.8),
+      inset 0 1px 0 rgb(255 255 255 / 0.05);
+  }
+
+  /* gradient hairline on top of cards */
+  .edge-glow {
+    @apply relative;
+  }
+  .edge-glow::before {
+    content: '';
+    @apply pointer-events-none absolute inset-x-6 -top-px h-px;
+    background: linear-gradient(90deg, transparent, rgb(129 140 248 / 0.7), rgb(232 121 249 / 0.6), transparent);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(180deg, #fff 20%, rgb(161 161 178) 100%);
+  }
+
+  .text-brand {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(90deg, #818cf8, #c084fc 50%, #e879f9);
+  }
+
+  /* legacy native range, kept for any module that still renders one */
+  .range {
+    @apply h-1.5 w-full cursor-pointer appearance-none rounded-full bg-secondary;
+  }
+  .range::-webkit-slider-thumb {
+    @apply h-4 w-4 appearance-none rounded-full border-2 border-primary bg-background shadow;
+  }
+  .range::-moz-range-thumb {
+    @apply h-4 w-4 rounded-full border-2 border-primary bg-background;
+  }
+  .range:disabled {
+    @apply cursor-not-allowed opacity-40;
+  }
+
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(39 39 52) transparent;
+  }
 }
 
-input[type=range]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 6px;
-  cursor: pointer;
-  background: #f04896;
-  border-radius: 3px
-}
-
-input[type=range]::-webkit-slider-thumb {
-  box-shadow: 1px 1px 1px #30302f, 0 0 1px #30302f;
-  border: 1px solid #af3636;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: #e11142;
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -5px
-}
-
-input[type=range]::-moz-range-thumb {
-  box-shadow: 1px 1px 1px #30302f, 0 0 1px #30302f;
-  border: 1px solid #000;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: #f04896;
-
-  cursor: pointer;
-  -webkit-appearance: none;
-  margin-top: -5px
-}
-
-input[type=range][name=colorDifference]:active:after,
-input[type=range][name=colorDifference]:focus:after,
-input[type=range][name=colorDifference]:hover:after {
-  content: attr(value)
-}
-
-input[type=range]:focus::-ms-fill-lower,
-input[type=range]:focus::-ms-fill-upper,
-input[type=range]:focus::-webkit-slider-runnable-track {
-  background: #001f3f;
-  background: var(--textColor)
-}
-
-input[type=range]::-moz-range-track {
-  width: 100%;
-  height: 6px;
-  cursor: pointer;
-  background: #001f3f;
-  background: var(--textColor);
-  border-radius: 1.3px
-}
-
-input[type=range]::-moz-range-thumb,
-input[type=range]::-ms-thumb {
-  box-shadow: 1px 1px 1px #30302f, 0 0 1px #30302f;
-  border: 1px solid #000;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: #001f3f;
-  background: var(--textColor);
-  cursor: pointer
-}
-
-input[type=range]::-ms-track {
-  width: 100%;
-  height: 6px;
-  cursor: pointer;
-  background: transparent;
-  border-color: transparent;
-  border-width: 16px 0;
-  color: transparent
-}
-
-input[type=range]::-ms-fill-lower,
-input[type=range]::-ms-fill-upper {
-  border: .2px solid #010101;
-  border-radius: 2.6px;
-  box-shadow: 1px 1px 1px #000, 0 0 1px #0d0d0d
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
